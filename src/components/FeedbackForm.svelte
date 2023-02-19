@@ -1,13 +1,16 @@
 <script>
   import Button from "./Button.svelte";
   import Card from "./Card.svelte";
+  import RatingSelection from "./RatingSelection.svelte";
 
   const minTextCount = 10;
 
-  let text = "";
+  let rating = 10;
   let isDisabled = true;
+  let text = "";
   let message;
 
+  const handleSelect = (e) => (rating = e.detail);
   const handleInput = () => {
     if (text.trim().length <= minTextCount) {
       message = `Text must be at least ${minTextCount}`;
@@ -24,7 +27,7 @@
     <h2>How would you rate your service with us?</h2>
   </header>
   <form>
-    <!-- TODO: Rating select -->
+    <RatingSelection on:select-rating={handleSelect} />
     <div class="input-group">
       <input
         bind:value={text}
