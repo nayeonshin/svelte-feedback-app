@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import { v4 as uuidv4 } from "uuid";
 
   import Button from "./Button.svelte";
@@ -11,6 +12,8 @@
   let isDisabled = true;
   let text = "";
   let message;
+
+  const dispatch = createEventDispatcher();
 
   const handleSelect = (e) => (rating = e.detail);
   const handleInput = () => {
@@ -29,6 +32,9 @@
         text,
         rating: +rating,
       };
+
+      dispatch("add-feedback", newFeedback);
+      text = "";
     }
   };
 </script>

@@ -5,7 +5,7 @@
 
   let feedback = [
     {
-      id: 1, // TODO: Replace with something like nanoid
+      id: 1,
       rating: 10,
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
     },
@@ -26,6 +26,10 @@
     feedback.reduce((accumulator, { rating }) => accumulator + rating, 0) /
     ratingCount;
 
+  const addFeedback = (e) => {
+    const newFeedback = e.detail;
+    feedback = [newFeedback, ...feedback];
+  };
   const deleteFeedback = (e) => {
     const itemId = e.detail;
     feedback = feedback.filter((item) => item.id !== itemId);
@@ -33,7 +37,7 @@
 </script>
 
 <main class="container">
-  <FeedbackForm />
+  <FeedbackForm on:add-feedback={addFeedback} />
   <FeedbackStats {ratingCount} {averageRating} />
   <FeedbackList {feedback} on:delete-feedback={deleteFeedback} />
 </main>
