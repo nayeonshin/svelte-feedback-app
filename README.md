@@ -1,5 +1,5 @@
 # [Svelte Feedback App](https://service-feedback.vercel.app/)
 
-A simple, static feedback app written in Svelte
+Svelte Feedback App is a simple, static feedback app written in Svelte
 
 ![Demo](/docs/demo.png)
